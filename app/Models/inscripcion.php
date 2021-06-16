@@ -13,4 +13,8 @@ class Inscripcion extends Model
 
     protected $fillable = ['id','cedula','servicio','asistencia','activo','created_at','updated_at','nino','fecha'];
 
+    public function infoasistente() {
+        return $this->hasOne('App\Models\Asistente', 'cedula', 'cedula');
+    }
+
 }

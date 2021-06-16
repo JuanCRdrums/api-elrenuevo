@@ -100,4 +100,28 @@ class InscripcionesController extends Controller
         else
             return [];
     }
+
+    public function consultar(Request $request)
+    {
+        $data = $request->all();
+        $fecha = Carbon::parse('this sunday')->toDateString();
+        $inscripcion = Inscripcion::where('cedula','=',$data['cedula'])->where('fecha', '=', $fecha)->where('activo','=',1)->get();
+        if(count($inscripcion))
+        {
+            $inscripcion[0]->infoasistente;
+            return $inscripcion;
+        }
+        else
+            return [];
+    }
+
+
+    public function cancelar(Request $request)
+    {
+        $data = $request->all();
+        $inscripcion = Inscripcion::find($data['id']);
+        $inscripcion->activo = 0;
+        $inscripcion->save();
+        return 1;
+    }
 }
