@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('inscripciones/store',[InscripcionesController::class, 'store']);
+
+
+
+Route::post('/api/inscripciones/store',[InscripcionesController::class, 'store']);

@@ -11,6 +11,6 @@ class Inscripcion extends Model
     const DB_TABLE = 'inscripciones';
     protected $table = self::DB_TABLE;
 
-    protected $fillable = ['id','cedula','servicio','asistencia','activo','created_at','updated_at'];
+    protected $fillable = ['id','cedula','servicio','asistencia','activo','created_at','updated_at','nino','fecha'];
 
 }
