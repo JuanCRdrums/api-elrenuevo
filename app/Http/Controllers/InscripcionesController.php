@@ -124,4 +124,12 @@ class InscripcionesController extends Controller
         $inscripcion->save();
         return 1;
     }
+
+
+    public function fechaActiva()
+    {
+        $fecha = Carbon::parse('this sunday');
+        $parsed = date_format($fecha, "d/m/Y");
+        return $parsed;
+    }
 }
