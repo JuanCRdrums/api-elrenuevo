@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 
 Route::post('/api/inscripciones/store',[InscripcionesController::class, 'store']);
+Route::post('/api/inscripciones/datosAsistente',[InscripcionesController::class, 'datosBasicos']);

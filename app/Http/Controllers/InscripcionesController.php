@@ -88,4 +88,16 @@ class InscripcionesController extends Controller
             "msg" => 'Registro correcto',
         ];
     }
+
+
+
+    public function datosBasicos(Request $request)
+    {
+        $data = $request->all();
+        $usuario = Asistente::where('cedula', '=', $data['cedula'])->get();
+        if(count($usuario) == 1)
+            return $usuario;
+        else
+            return [];
+    }
 }
