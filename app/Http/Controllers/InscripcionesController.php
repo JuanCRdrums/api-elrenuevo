@@ -145,4 +145,15 @@ class InscripcionesController extends Controller
         }
         return $inscripciones;
     }
+
+
+
+    public function asistencia(Request $request)
+    {
+        $data = $request->all();
+        $inscripcion = Inscripcion::find($data['id']);
+        $inscripcion->asistencia = $data['asistencia'];
+        $inscripcion->save();
+        return 1;
+    }
 }

@@ -25,5 +25,6 @@ Route::post('/api/inscripciones/store',[InscripcionesController::class, 'store']
 Route::post('/api/inscripciones/datosAsistente',[InscripcionesController::class, 'datosBasicos']);
 Route::post('/api/inscripciones/consultar',[InscripcionesController::class, 'consultar']);
 Route::post('/api/inscripciones/cancelar',[InscripcionesController::class, 'cancelar']);
+Route::post('/api/inscripciones/asistencia',[InscripcionesController::class, 'asistencia']);
 Route::get('/api/inscripciones/fechaActiva',[InscripcionesController::class, 'fechaActiva']);
 Route::get('/api/inscripciones',[InscripcionesController::class, 'inscripciones']);
