@@ -156,4 +156,10 @@ class InscripcionesController extends Controller
         $inscripcion->save();
         return 1;
     }
+
+
+    public function asistentes()
+    {
+        return Asistente::all();
+    }
 }

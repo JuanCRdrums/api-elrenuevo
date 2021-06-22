@@ -28,3 +28,5 @@ Route::post('/api/inscripciones/cancelar',[InscripcionesController::class, 'canc
 Route::post('/api/inscripciones/asistencia',[InscripcionesController::class, 'asistencia']);
 Route::get('/api/inscripciones/fechaActiva',[InscripcionesController::class, 'fechaActiva']);
 Route::get('/api/inscripciones',[InscripcionesController::class, 'inscripciones']);
+Route::get('/api/inscripciones/asistentes',[InscripcionesController::class, 'asistentes']);
+
