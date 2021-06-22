@@ -132,4 +132,17 @@ class InscripcionesController extends Controller
         $parsed = date_format($fecha, "d/m/Y");
         return $parsed;
     }
+
+
+
+    public function inscripciones()
+    {
+        $fecha = Carbon::parse('this sunday')->toDateString();
+        $inscripciones = Inscripcion::where('fecha','=',$fecha)->where('activo','=',1)->get();
+        foreach($inscripciones as $inscripcion)
+        {
+            $inscripcion->infoasistente;
+        }
+        return $inscripciones;
+    }
 }
