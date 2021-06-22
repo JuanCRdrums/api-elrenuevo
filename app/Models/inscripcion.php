@@ -11,7 +11,7 @@ class Inscripcion extends Model
     const DB_TABLE = 'inscripciones';
     protected $table = self::DB_TABLE;
 
-    protected $fillable = ['id','cedula','servicio','asistencia','activo','created_at','updated_at','nino','fecha'];
+    protected $fillable = ['id','cedula','servicio','asistencia','activo','created_at','updated_at','nino','fecha','nuevo'];
 
     public function infoasistente() {
         return $this->hasOne('App\Models\Asistente', 'cedula', 'cedula');
