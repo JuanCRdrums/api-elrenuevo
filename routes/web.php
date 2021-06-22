@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InscripcionesController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::post('/api/inscripciones/datosAsistente',[InscripcionesController::class,
 Route::post('/api/inscripciones/consultar',[InscripcionesController::class, 'consultar']);
 Route::post('/api/inscripciones/cancelar',[InscripcionesController::class, 'cancelar']);
 Route::post('/api/inscripciones/asistencia',[InscripcionesController::class, 'asistencia']);
+Route::post('/api/login',[AuthController::class, 'login']);
 Route::get('/api/inscripciones/fechaActiva',[InscripcionesController::class, 'fechaActiva']);
 Route::get('/api/inscripciones',[InscripcionesController::class, 'inscripciones']);
 Route::get('/api/inscripciones/asistentes',[InscripcionesController::class, 'asistentes']);
