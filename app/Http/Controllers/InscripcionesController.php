@@ -142,6 +142,7 @@ class InscripcionesController extends Controller
         foreach($inscripciones as $inscripcion)
         {
             $inscripcion->infoasistente;
+            $inscripcion->asistencia = intval($inscripcion->asistencia);
         }
         return $inscripciones;
     }
