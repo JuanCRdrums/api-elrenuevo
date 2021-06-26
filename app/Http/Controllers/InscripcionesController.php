@@ -61,7 +61,7 @@ class InscripcionesController extends Controller
         //Adultos
         if($data['nino'] == 0){
             $inscritos = Inscripcion::where('nino', '=', 0)->where('fecha','=',$data['fecha'])->where('activo','=',1)->where('servicio','=',$data['servicio'])->get();
-            if(count($inscritos) >= 60)
+            if(count($inscritos) >= 70)
             return [
                 "error" => 1,
                 "msg" => 'El aforo de adultos para este horario ya se ha completado. Te recomendamos que selecciones un horario diferente o que te quedes en casa y te conectes
