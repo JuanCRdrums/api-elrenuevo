@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InscripcionesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OpcionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,8 @@ Route::post('/api/login',[AuthController::class, 'login']);
 Route::get('/api/inscripciones/fechaActiva',[InscripcionesController::class, 'fechaActiva']);
 Route::get('/api/inscripciones',[InscripcionesController::class, 'inscripciones']);
 Route::get('/api/inscripciones/asistentes',[InscripcionesController::class, 'asistentes']);
+
+//OPCIONES
+Route::get('/api/opciones/{opcion}',[OpcionesController::class, 'opcion']);
+Route::post('/api/opciones/set',[OpcionesController::class, 'setOption']);
 
