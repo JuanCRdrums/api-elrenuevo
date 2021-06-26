@@ -142,6 +142,7 @@ class InscripcionesController extends Controller
         foreach($inscripciones as $inscripcion)
         {
             $inscripcion->infoasistente;
+            $inscripcion->infoasistente->edad = Carbon::parse($inscripcion->infoasistente->nacimiento)->age;
         }
         return $inscripciones;
     }
@@ -160,6 +161,11 @@ class InscripcionesController extends Controller
 
     public function asistentes()
     {
-        return Asistente::all();
+        $asistentes =  Asistente::all();
+        foreach($asistentes as $asistente)
+        {
+            $asistente->edad = Carbon::parse($asistente->nacimiento)->age;
+        }
+        return $asistentes;
     }
 }
