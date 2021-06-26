@@ -143,6 +143,7 @@ class InscripcionesController extends Controller
         {
             $inscripcion->infoasistente;
             $inscripcion->infoasistente->edad = Carbon::parse($inscripcion->infoasistente->nacimiento)->age;
+            $inscripcion->asistencia = intval($inscripcion->asistencia);
         }
         return $inscripciones;
     }
