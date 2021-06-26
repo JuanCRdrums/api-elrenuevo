@@ -16,10 +16,6 @@ use App\Http\Controllers\OpcionesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 
 
