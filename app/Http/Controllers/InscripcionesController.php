@@ -181,14 +181,14 @@ class InscripcionesController extends Controller
             $date = date_create($data['fecha']);
             $parsed = date_format($date, "Y-m-d");
             $data['fecha'] = $parsed;
-            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('servicio','=',$data['servicio'])->get();
+            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('servicio','=',$data['servicio'])->where('activo', '=', 1)->get();
         }
         if($data['fecha'] != null && $data['servicio'] == 0)
         {
             $date = date_create($data['fecha']);
             $parsed = date_format($date, "Y-m-d");
             $data['fecha'] = $parsed;
-            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->get();
+            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('activo', '=', 1)->get();
         }
 
         foreach($inscripciones as $inscripcion)
