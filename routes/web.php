@@ -24,12 +24,16 @@ Route::post('/api/inscripciones/datosAsistente',[InscripcionesController::class,
 Route::post('/api/inscripciones/consultar',[InscripcionesController::class, 'consultar']);
 Route::post('/api/inscripciones/cancelar',[InscripcionesController::class, 'cancelar']);
 Route::post('/api/inscripciones/asistencia',[InscripcionesController::class, 'asistencia']);
-Route::post('/api/login',[AuthController::class, 'login']);
+Route::post('/api/inscripciones/asistenciaFecha',[InscripcionesController::class, 'inscripcionFecha']);
 Route::get('/api/inscripciones/fechaActiva',[InscripcionesController::class, 'fechaActiva']);
 Route::get('/api/inscripciones',[InscripcionesController::class, 'inscripciones']);
 Route::get('/api/inscripciones/asistentes',[InscripcionesController::class, 'asistentes']);
 
+
 //OPCIONES
 Route::get('/api/opciones/{opcion}',[OpcionesController::class, 'opcion']);
 Route::post('/api/opciones/set',[OpcionesController::class, 'setOption']);
+
+
+Route::post('/api/login',[AuthController::class, 'login']);
 

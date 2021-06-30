@@ -169,4 +169,35 @@ class InscripcionesController extends Controller
         }
         return $asistentes;
     }
+
+
+
+    public function inscripcionFecha(Request $request)
+    {
+        $data = $request->all();
+        $inscripciones = [];
+        if($data['fecha'] != null and $data['servicio'] != 0)
+        {
+            $date = date_create($data['fecha']);
+            $parsed = date_format($date, "Y-m-d");
+            $data['fecha'] = $parsed;
+            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('servicio','=',$data['servicio'])->get();
+        }
+        if($data['fecha'] != null && $data['servicio'] == 0)
+        {
+            $date = date_create($data['fecha']);
+            $parsed = date_format($date, "Y-m-d");
+            $data['fecha'] = $parsed;
+            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->get();
+        }
+
+        foreach($inscripciones as $inscripcion)
+        {
+            $inscripcion->infoasistente;
+            $inscripcion->infoasistente->edad = Carbon::parse($inscripcion->infoasistente->nacimiento)->age;
+            $inscripcion->asistencia = intval($inscripcion->asistencia);
+        }
+        return $inscripciones;
+
+    }
 }
