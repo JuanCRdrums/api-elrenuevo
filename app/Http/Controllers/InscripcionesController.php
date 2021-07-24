@@ -176,21 +176,23 @@ class InscripcionesController extends Controller
     {
         $data = $request->all();
         $inscripciones = [];
+        $consulta = Inscripcion::where('activo', '=', 1);
         if($data['fecha'] != null and $data['servicio'] != 0)
         {
             $date = date_create($data['fecha']);
             $parsed = date_format($date, "Y-m-d");
             $data['fecha'] = $parsed;
-            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('servicio','=',$data['servicio'])->where('activo', '=', 1)->get();
+            $consulta = Inscripcion::where('fecha','=',$data['fecha'])->where('servicio','=',$data['servicio'])->where('activo', '=', 1);
         }
         if($data['fecha'] != null && $data['servicio'] == 0)
         {
             $date = date_create($data['fecha']);
             $parsed = date_format($date, "Y-m-d");
             $data['fecha'] = $parsed;
-            $inscripciones = Inscripcion::where('fecha','=',$data['fecha'])->where('activo', '=', 1)->get();
+            $consulta = Inscripcion::where('fecha','=',$data['fecha'])->where('activo', '=', 1);
         }
 
+        $inscripciones = $consulta->get();
         foreach($inscripciones as $inscripcion)
         {
             $inscripcion->infoasistente;
