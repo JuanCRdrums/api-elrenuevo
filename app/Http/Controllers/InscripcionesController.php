@@ -135,10 +135,15 @@ class InscripcionesController extends Controller
 
 
 
-    public function inscripciones()
+    public function inscripciones(Request $request)
     {
         $fecha = Carbon::parse('this sunday')->toDateString();
-        $inscripciones = Inscripcion::where('fecha','=',$fecha)->where('activo','=',1)->get();
+        $consulta = Inscripcion::where('fecha','=',$fecha)->where('activo','=',1);
+        $data = $request->all();
+        if($data['servicio'] != 0){
+            $consulta = $consulta->where('servicio', '=', $data['servicio']);
+        }
+        $inscripciones = $consulta->get();
         foreach($inscripciones as $inscripcion)
         {
             $inscripcion->infoasistente;
