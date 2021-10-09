@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InscripcionesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OpcionesController;
+use App\Http\Controllers\ServicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,8 @@ Route::post('/api/opciones/set',[OpcionesController::class, 'setOption']);
 
 
 Route::post('/api/login',[AuthController::class, 'login']);
+
+//INSCRIPCIONES A SERVICIO
+Route::post('/api/servicio/store',[ServicioController::class,'store']);
+Route::get('/api/servicio',[ServicioController::class,'index']);
 
