@@ -16,7 +16,7 @@ class Servicio extends Model
     'asistiendo','created_at','updated_at'];
 
     public function NombreArea(){
-        return config('options.areas_servicio')[$this->area];
+        return config('options.areas_servicio')[intval($this->area)];
     }
 
 }
