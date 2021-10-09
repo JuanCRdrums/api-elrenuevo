@@ -20,7 +20,7 @@ class CreateServicioTable extends Migration
             $table->string('edad',32);
             $table->string('celular',32);
             $table->integer('area');
-            $table->boolean('experiencia');
+            $table->text('experiencia');
             $table->boolean('mi_renuevo');
             $table->string('asistiendo',32);
             $table->timestamps();
