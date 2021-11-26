@@ -5,6 +5,7 @@ use App\Http\Controllers\InscripcionesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OpcionesController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\AniversarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::post('/api/login',[AuthController::class, 'login']);
 Route::post('/api/servicio/store',[ServicioController::class,'store']);
 Route::get('/api/servicio',[ServicioController::class,'index']);
 
+//INSCRIPCIONES ANIVERSARIO
+Route::post('/api/aniversario/store',[AniversarioController::class,'store']);
+Route::post('/api/aniversario/inscritos',[AniversarioController::class,'inscritos']);
