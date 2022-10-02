@@ -15,14 +15,12 @@ class InscripcionesController extends Controller
         $data['asistencia'] = 0;
         $data['activo'] = 1;
         $data['habilitado'] = 1;
-        $date = date_create($data['nacimiento']);
-        $parsed = date_format($date, "Y-m-d");
-        $data['nacimiento'] = $parsed;
-        $edad = Carbon::parse($data['nacimiento'])->age;
-        $data['nino'] = 0;
-        $data['fecha'] = Carbon::parse('this sunday')->toDateString();
-        if($edad < 12)
-            $data['nino'] = 1;
+        $data['fecha'] = Carbon::create(2022,11,6,12)->toDateString();
+        $data['email'] = "null@null.com"; //temporal
+        //valores por defecto (solo para Santiago Benavides)
+        $data['servicio'] = 1;
+        $data['nuevo'] = 0;
+        $data['nacimiento'] = Carbon::create("today")->toDateString();
 
 
 
@@ -32,24 +30,15 @@ class InscripcionesController extends Controller
         {
             return [
                 "error" => 1,
-                "msg" => 'Ya tienes una inscripción registrada para este domingo',
+                "msg" => 'Ya tienes una inscripción registrada',
             ];
         }
-
-
-        //VALIDAR ENCUESTA COVID
-        if($data['covid1'] || count($data['covid2']) || $data['covid3'] || $data['covid4'])
-            return [
-                "error" => 1,
-                "msg" => 'Por motivos de bioseguridad, no podemos completar tu inscripción. Te pedimos que te quedes en casa, consultes a tu médico de confianza
-                y te conectes a la iglesia en línea a través de nuestro canal de Youtube.',
-            ];
 
 
 
         //VALIDAR CANTIDAD DE ASISTENTES
         //Niños
-        if($data['nino'] == 1){
+        /*if($data['nino'] == 1){
             $inscritos = Inscripcion::where('nino', '=', 1)->where('fecha','=',$data['fecha'])->where('activo','=',1)->where('servicio','=',$data['servicio'])->get();
             if(count($inscritos) >= 20)
             return [
@@ -57,15 +46,16 @@ class InscripcionesController extends Controller
                 "msg" => 'El aforo de niños para este horario ya se ha completado. Te recomendamos que selecciones un horario diferente o que te quedes en casa y te conectes
                 a la iglesia en línea a través de nuestro canal de Youtube.',
             ];
-        }
+        }*/
+
+
         //Adultos
         if($data['nino'] == 0){
-            $inscritos = Inscripcion::where('nino', '=', 0)->where('fecha','=',$data['fecha'])->where('activo','=',1)->where('servicio','=',$data['servicio'])->get();
-            if(count($inscritos) >= 70)
+            $inscritos = Inscripcion::where('nino', '=', 0)->where('fecha','=',$data['fecha'])->where('activo','=',1)->get();
+            if(count($inscritos) >= 400)
             return [
                 "error" => 1,
-                "msg" => 'El aforo de adultos para este horario ya se ha completado. Te recomendamos que selecciones un horario diferente o que te quedes en casa y te conectes
-                a la iglesia en línea a través de nuestro canal de Youtube.',
+                "msg" => 'El aforo de adultos para este horario ya se ha completado.',
             ];
         }
 
@@ -128,7 +118,8 @@ class InscripcionesController extends Controller
 
     public function fechaActiva()
     {
-        $fecha = Carbon::parse('this sunday');
+        //$fecha = Carbon::parse('this sunday');
+        $fecha = Carbon::create(2022,11,6,12);
         $parsed = date_format($fecha, "d/m/Y");
         return $parsed;
     }
