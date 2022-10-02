@@ -94,7 +94,7 @@ class InscripcionesController extends Controller
     public function consultar(Request $request)
     {
         $data = $request->all();
-        $fecha = Carbon::parse('this sunday')->toDateString();
+        $fecha = Carbon::create(2022,11,6,12)->toDateString();
         $inscripcion = Inscripcion::where('cedula','=',$data['cedula'])->where('fecha', '=', $fecha)->where('activo','=',1)->get();
         if(count($inscripcion))
         {
