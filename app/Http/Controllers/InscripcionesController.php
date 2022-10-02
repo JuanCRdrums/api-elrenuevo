@@ -128,7 +128,7 @@ class InscripcionesController extends Controller
 
     public function inscripciones(Request $request)
     {
-        $fecha = Carbon::parse('this sunday')->toDateString();
+        $fecha = Carbon::create(2022,11,6,12)->toDateString();
         $consulta = Inscripcion::where('fecha','=',$fecha)->where('activo','=',1);
         $data = $request->all();
         if($data['servicio'] != 0){
